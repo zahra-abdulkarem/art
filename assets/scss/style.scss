@@ -4,7 +4,6 @@ $dark-color: #252423;
 $main-color: #47443e;
 $second-color: #aa98b5;
 $light-color: #e1dcde;
-$box-shadow: 0 0 1.5rem #32435f82;
 
 *{
     font-family: 'Roboto', sans-serif;
@@ -14,43 +13,24 @@ $box-shadow: 0 0 1.5rem #32435f82;
     outline: none;
     border: none;
     text-transform: capitalize;
-    transition: .6s;
 }
 html{
     font-size: 62.5%;
     scroll-behavior: smooth;
 }
 html::-webkit-scrollbar{
-    width: .8rem;
-    background: $second-color;
+    width: 1rem;
+    background: $main-color;
 }
 html::-webkit-scrollbar-track{
     background: transparent;
 }
 html::-webkit-scrollbar-thumb{
-    background: #fff;
     border-radius: 5rem;
-    background: $main-color;
+    background: $second-color;
 }
 
-
-
-%display-flex{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-.heading{
-    text-align: center;
-    color: #fff;
-    text-transform: uppercase;
-    font-size: 3rem;
-}
-.heading span{
-    text-transform: uppercase;
-    color: $second-color;
-}
-%main-btn{
+.main-btn{
     margin-top: 1rem;
     display: inline-block;
     padding: 1rem 3rem;
@@ -61,26 +41,15 @@ html::-webkit-scrollbar-thumb{
     border-radius: 3rem;
     text-decoration: none;
 }
-.main-btn{
-    @extend %main-btn;
-}
 .main-btn:hover{
     color: $dark-color;
     background: $light-color;
 }
-
-section{
-    padding: 1rem 6%;
-}
-
 .container-all{
     width: 100%;
     background: $dark-color;
     overflow: hidden;
 }
-
-
-
 header{
     display: inline-block;
     align-items: center;
@@ -125,15 +94,32 @@ header{
     }
 }
 
+section{
+    padding: 1rem 6%;
+    width: 100%;
+}
+.heading{
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 3rem;
+    span{
+        text-transform: uppercase;
+        color: $second-color;
+    }
+}
 .home{
-    min-height: 100vh;
-    @extend %display-flex;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: 60% 40%;
+    padding: 10rem;
     img{
-        margin-top: 10rem;
         width: 35rem;
     }
     .content{
-        max-width: 60rem;
+        width: 100%;
+        margin: 1rem;
         h3{
         font-size: 3rem;
         text-transform: uppercase;
@@ -141,8 +127,6 @@ header{
         }
         p{
             font-size: 1.5rem;
-            font-weight: lighter;
-            line-height: 1.8;
             padding: 1rem 0;
             color: #555;
         }
@@ -189,7 +173,7 @@ header{
     .box-container{
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-        gap: 1.5rem;
+        gap: 1rem;
         .box{
             padding: 2rem;
             text-align: center;
@@ -245,7 +229,7 @@ header{
             .carousel-item{
                 .video-card{
                     video{
-                        border-radius: 20px;
+                        border-radius: 1rem;
                         width: 27rem;
                         &:hover{
                             transform: scale(1.1);
@@ -258,16 +242,14 @@ header{
 }
 .review{
     .box-container{
-        display: flex;
-        grid-template-columns: repeat(auto-fit, minmax(30rem, 1ft));
-        gap: 10rem;
+        display: grid;
+        grid-template-columns: repeat(2, 50%);
         padding: 2rem .5rem;
         .box{
             background: #ffffff0c;
             border: .1rem solid #fff;
             text-align: center;
-            padding: 1.4rem 1rem;
-            width: 50%;
+            padding: 1rem;
             margin: 1rem;
             p{
                 font-size: 1.5rem;
@@ -287,12 +269,11 @@ header{
                 color: $second-color;
             }
             img{
-                width: 20rem;
+                width: 10%;
             }
         }
     }
 }
-
 .contact{
     .contact-box{
         position: relative;
@@ -309,6 +290,7 @@ header{
             }
         }
         .right-side{
+            width: 99%;
             display: flex;
             flex-direction: column;
             padding: 1rem;
@@ -319,7 +301,7 @@ header{
                 color: $light-color;
             }
             %input{
-                width: 45rem;
+                width: 98%;
                 padding: 1rem;
                 margin: 1rem 0;
                 background: $main-color;
@@ -333,6 +315,9 @@ header{
             textarea{
                 min-height: 10rem;
                 @extend %input;
+            }
+            .main-btn{
+                width: 25%;
             }
         }
     }
@@ -436,8 +421,6 @@ footer{
     }
 }
 
-
-
 @media (max-width: 991px){
 html{
     font-size: 55%;
@@ -453,10 +436,7 @@ section{
     width: 25rem;
 }
 }
-
-
-
-@media (max-width: 768px){
+@media (max-width: 661px){
     header{
         .navbar{
             display: none;
@@ -489,22 +469,41 @@ section{
         }
     }
 .home{
-    justify-content: center;
-    align-items: center;
+    grid-template-columns: 100%;
+    padding: 7rem;
+    .content{
+        width: 100%;
+        h3{
+            font-size: 1.5rem;
+        }
+        p{
+            font-size: 1rem;
+        }
+    }
 }
 .home img{
     margin-top: 0;
 }
-.home .content h3{
-    font-size: 2.4rem;
-}
-.home .content p{
-    font-size: 1rem;
+.video{
+    .carousel{
+        width: 100%;
+        left: 0;
+        .carousel-inner{
+            .carousel-item{
+                .video-card{
+                    video{
+                        width: 99%;
+                    }
+                }
+            }
+        }
+    }
 }
 .review{
     .box-container{
         flex-direction: column;
         align-items: center;
+        grid-template-columns: repeat(1, 90%);
     }
 }
 .contact{
@@ -512,7 +511,7 @@ section{
         flex-direction: column;
         .left-side{
             img{
-                width: 25rem;
+                width: 35rem;
                 margin-left: 4rem;
             }
         }
@@ -524,10 +523,32 @@ section{
     }
 }
 }
-
-
 @media (max-width: 450px){
     html{
         font-size: 50%;
+    }
+    .main-btn{
+        padding: .6rem 2rem;
+        font-size: 1.6rem;
+    }
+    .menu{
+        .box-container{
+            grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+            .box{
+                img{
+                    height: 15rem;
+                    border-radius: 2rem;
+                }
+            }
+        }
+    }
+    .contact{
+        .contact-box{
+            .right-side{
+                .main-btn{
+                    width: 50%;
+                }
+            }
+        }
     }
 }

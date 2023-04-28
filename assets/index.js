@@ -10,7 +10,13 @@ let moreDetails = document.querySelector(".more-details");
 let moreDetailsButton = document.querySelector("#more-details-button");
 moreDetailsButton.onclick = function(){
     moreDetails.classList.toggle("show");
-    moreDetailsButton.innerHTML = "show less";
+    if(moreDetails.classList.contains("show") === true){
+        moreDetailsButton.innerHTML = "see less";
+    }else if(moreDetails.classList.contains("show") === false){
+        moreDetailsButton.innerHTML = "see more";
+    }else{
+        moreDetailsButton.innerHTML = "see less";
+    }
     
 }
 
